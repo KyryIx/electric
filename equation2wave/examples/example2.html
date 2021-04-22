@@ -31,11 +31,11 @@
 		<table align="center" border="1" style="border:1px solid black;">
 			<tr>
 				<td class="right">Duration</td>
-				<td class="left">1.0 second</td>
+				<td class="left">2.0 seconds</td>
 			</tr>
 			<tr>
 				<td class="right">Equation</td>
-				<td class="left">100*sin(1000*x)</td>
+				<td class="left">2*sin(10*x)*cos(10*x)^2</td>
 			</tr>
 			<tr>
 				<td class="right">Variable</td>
@@ -51,27 +51,39 @@
 			</tr>
 			<tr>
 				<td class="right">min y variable value</td>
-				<td class="left">-100.0</td>
+				<td class="left">-1.0</td>
 			</tr>
 			<tr>
 				<td class="right">max y variable value</td>
-				<td class="left">100.0</td>
+				<td class="left">1.0</td>
 			</tr>
 		</table>
 		<p>The code is:</p>
 <pre>
 var wave = new Wave();
+wave.setFilename( 'signal.wav' );
+wave.setDuration( '2.0' );
+wave.setEquation( '2*sin(10*x)*cos(10*x)^2' );
+wave.setMinXVariableValue( 0.0 );
+wave.setMaxXVariableValue( 2 * Math.PI );
+wave.setMinYVariableValue( -1.0 );
+wave.setMaxYVariableValue(  1.0 );
 wave.getWaveFile();
 </pre>
 		<p>The result is<br/>
-		    <br/>(zoom level out)
-			<br/><a href="../img/example_1_1.png" target="_blank"><img src="../img/example_1_1.png" alt="Example 1.1 in Audacity Music Editor"/></a>
-			<br/>and
-			(zoom level in)
-			<br/><a href="../img/example_1_2.png" target="_blank"><img src="../img/example_1_2.png" alt="Example 1.2 in Audacity Music Editor"/></a><p/>
+		    <br/><a href="../img/example_2_1.png" target="_blank"><img src="../img/example_2_1.png" alt="Example 2.1 in Audacity Music Editor"/></a><p/>
 		<script>
+		/*
 			var wave = new Wave();
+			wave.setFilename( 'signal.wav' );
+			wave.setDuration( '2.0' );
+			wave.setEquation( '2*sin(10*x)*cos(10*x)^2' );
+			wave.setMinXVariableValue( 0.0 );
+			wave.setMaxXVariableValue( 2 * Math.PI );
+			wave.setMinYVariableValue( -1.0 );
+			wave.setMaxYVariableValue(  1.0 );
 			wave.getWaveFile();
+			*/
 		</script>
 	</body>
 </html>

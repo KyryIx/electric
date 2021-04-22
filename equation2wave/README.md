@@ -42,3 +42,10 @@ The Wave class is to use to create WAVE files sound using equations as sine, cos
 |    void    | getWaveFile()                                    | Download to file Wave.                                       |
 
 See [The Canonical WAVE file format](http://soundfile.sapp.org/doc/WaveFormat/) to learn about this format.
+
+Examples are in examples directory and you see here.
+
+1. ![example_1_1](./img/example_1_1.png)
+2. ![example_1_2](./img/example_1_2.png)
+3. ![example_2_1](./img/example_2_1.png)
+
