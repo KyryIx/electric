@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>DL850E Read Float File to Numbers</title>
+		<script src="./functions.js"></script>
+		<style>
+			span{
+				font-weight: bold;
+			}
+			.borderCanvas{
+				border: 1px solid #bce3c3;
+			}
+			#canvasAxes{
+				position: absolute;
+				z-index: 1;
+				float: left;
+			}
+			#canvasCurve{
+				position: absolute;
+				z-index: 2;
+				float: left;
+			}
+			#canvasPoint{
+				position: relative;
+				z-index: 3;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 style="text-align: center;">Read data file FLD generate in <a href="https://www.yokogawa.com.br/produtos/teste-e-medicao/oscilloscopes/dl850edl850ev-scopecorder" target="_blank">DL850E</a></h1>
+		<fieldset>
+			<legend>Load data</legend>
+			<table align="center"> 
+				<tr>
+					<td><span>FLD file type:</span> <input type="file" id="fileFLD" required onchange="loadFile(this);" accept=".fld" /></td>
+				</tr>
+				<tr>
+					<td align="center">
+						<canvas class="borderCanvas" id="canvasAxes" width="840" height="640">Error: This browser not supported HTML5!</canvas>
+						<canvas class="borderCanvas" id="canvasCurve" width="840" height="640">Error: This browser not supported HTML5!</canvas>
+						<canvas class="borderCanvas" id="canvasPoint" width="840" height="640">Error: This browser not supported HTML5!</canvas>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset>
+			<legend>Export data to CSV file</legend>
+			<table align="center"> 
+				<tr>
+					<td class="right"><span>output name file CSV:</span></td>
+					<td class="left"><input type="text" id="fileCSV" value="data.csv"/></td>
+				</tr>
+				<tr>
+					<td class="right"></td>
+					<td class="left"><input type="button" value="Export" onclick="exportFile('fileCSV');"/></td>
+				</tr>
+			</table>
+		</fieldset>
+	</body>
+</html>
