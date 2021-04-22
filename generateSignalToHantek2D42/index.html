@@ -1,0 +1,183 @@
+<html>
+	<head>
+		<title>Generate form Hantek2D42 created by Everton Pereira da Cruz</title>
+		<script src="./math.min.js"></script>
+		<script src="./functions.js"></script>
+		<style>
+			.borderCanvas{
+				border: 1px solid #bce3c3;
+			}
+			#canvasAxes{
+				position: absolute;
+				z-index: 1;
+				float: left;
+			}
+			#canvasCurve{
+				position: absolute;
+				z-index: 2;
+				float: left;
+			}
+			#canvasPoint{
+				position: relative;
+				z-index: 3;
+			}
+			#help{
+				padding: 2px;
+				margin-left: 2px;
+				font-family: Sans-serif;
+				background-color: #ddd;
+				cursor: help;
+			}
+			.reference{
+				font-family: Sans-serif;
+				font-size: 10pt;
+				font-weight: bold;
+			}
+		</style>
+		<script>
+			const quantPoints = 512;
+			var limLowerX     = -3.14;
+			var limUpperX     = +3.14;
+			var limLowerY     = -2.5;
+			var limUpperY     = +2.5;
+			var sizeInterval  = limUpperX - limLowerX;
+			var deltaX        = sizeInterval / quantPoints;
+			
+			const offset      = 0;
+			const canvasHeight= 240;
+			const canvasWidth = 320;
+			
+			const colorAxis   = '#abb0ab';
+			const widthAxis   = 1;
+			const colorCurve  = '#ad0a0a';
+			const widthCurve  = 1;
+			const colorPoint  = '#0d00ff';
+			const radiusPoint = 2.5;
+			
+			const timeUpadate = 10;
+		
+			function execute(){
+				var expressionFieldId  = 'expression';
+				var frequencyFieldId   = 'frequency';
+				var voltagePeekFieldId = 'amplitude';
+				var filename           = window.document.getElementById( 'filename' ).value;
+				
+				generateFile( expressionFieldId, frequencyFieldId, voltagePeekFieldId, filename );
+			}
+			
+			function draw(){
+				drawAxis( 'canvasAxes', x1+5, y1+5, x2-5, y2-5, colorAxis, widthAxis );
+				drawCurve( 'canvasCurve', expression, limitsRealX, limitsRealY, limitsPixelX, limitsPixelY, colorCurve, widthCurve );
+			}
+			
+			function drawPointIteration(){
+				drawPoint( 'canvasPoint', expression, xPoint, limitsRealX, limitsRealY, limitsPixelX, limitsPixelY, colorPoint, radiusPoint );
+				xPoint += direction;
+				
+				if( (xPoint < offset) || (xPoint > canvasWidth - offset) ){
+					direction = direction * (-1);
+					xPoint += direction;
+				}
+			}
+			
+			function loadInformations(){
+				x1           = offset;
+				y1           = offset;
+				x2           = canvasWidth - offset;
+				y2           = canvasHeight - offset;
+				expression   = window.document.getElementById( 'expression' ).value;
+				limitsRealX  = [limLowerX, limUpperX];
+				limitsRealY  = [limLowerY, limUpperY];
+				limitsPixelX = [offset, canvasWidth - offset];
+				limitsPixelY = [offset, canvasHeight - offset];
+			}
+			
+			function init(){
+				loadInformations();
+				clear( ['canvasAxes', 'canvasCurve', 'canvasPoint'] );
+				draw();
+				clearInterval( interval );
+				interval = setInterval( drawPointIteration, timeUpadate );
+			}
+			
+			var x1           = 0;
+			var y1           = 0;
+			var x2           = 0;
+			var y2           = 0;
+			var expression   = '';
+			var limitsRealX  = [];
+			var limitsRealY  = [];
+			var limitsPixelX = [];
+			var limitsPixelY = [];
+			var xPoint       = 0;
+			var direction    = 1;
+			
+			var interval     = null;
+			
+			window.onload = init;
+		</script>
+	</head>
+	<body>
+		<table align="center">
+			<tr>
+				<td align="center" colspan="2">
+					<h1 class="title">Generate signal to <a href="http://hantek.com.cn/products/detail/13174" target="_blank">Hantek2D42</a></h1>
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray"/>
+				</td>
+			</tr>
+			<tr>
+				<td td align="right"><span class="label">Expression:</span></td>
+				<td>
+					<input type="text" id="expression" value="0.125 * random() * cos(x) + floor(1 * sin(3*x)) + 1" onchange="init();" onkeyup="init();"/>
+					<span id="help" onclick="functions();">?</span>
+				</td>
+			</tr>
+			<tr>
+				<td td align="right"><span class="label">Frequency (Hz):</span></td>
+				<td><input type="text" id="frequency" value="1000"/></td>
+			</tr>
+			<tr>
+				<td align="right"><span class="label">Amplitude (V):</span></td>
+				<td><input type="text" id="amplitude" value="1.5"/></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2" class="tdCanvas">
+					<canvas class="borderCanvas" id="canvasAxes" width="320" height="240">Error: This browser not supported HTML5!</canvas>
+					<canvas class="borderCanvas" id="canvasCurve" width="320" height="240">Error: This browser not supported HTML5!</canvas>
+					<canvas class="borderCanvas" id="canvasPoint" width="320" height="240">Error: This browser not supported HTML5!</canvas>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray"/>
+					<b>Filename:</b> <input type="text" id="filename" value="Curve"/>&nbsp;<input type="button" value="Generate File CSV" onclick="execute();"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<hr style="height:1px;border-width:0;color:gray;background-color:gray"/>
+					<tt>
+						Examples:
+						<ul>
+							<li>cos(3*x)+sin(5*x)</li>
+							<li>1.75*exp(-2.5*abs(x))*sin(30*x)</li>
+							<li>2.1*exp(-abs(x))</li>
+							<li>2.1*exp(-abs(x))+0.125*random()</li>
+							<li>x - floor(x)</li>
+							<li>x - floor(x)-1/2</li>
+							<li>exp(x - floor(x))-2</li>
+							<li>exp(x - floor(x) - 1/2)-2</li>
+							<li>tanh(x + 0.325*random())</li>
+							<li>round(2.5*sin(x))</li>
+							<li>x>-2.75?1.1:0</li>
+							<li>x==0?0:1</li>
+							<li>(-1/3<=x)&(x<=1/3)?3/2:0</li>
+					</tt>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2" class="reference"><a href="http://www.everton.mat.br" target="_blank">Everton@2020</a></td>
+			</tr>
+		</table>
+	</body>
+</html>
