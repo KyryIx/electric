@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>Generate WAV file with math function</title>
+		<script src="../src/math.9.3.2.min.js"></script>
+		<script src="../src/Wave.js"></script>
+		<style>
+			body{
+				text-align: center;
+			}
+			.right{
+				text-align: right;
+				padding: 5px;
+			}
+			.left{
+				text-align: left;
+				padding: 5px;
+			}
+			img{
+				width: 50%;
+			}
+			pre{
+				background-color: black;
+				color: white;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Generate WAV file with math function</h1>
+		<p>Example created with:</p>
+		<table align="center" border="1" style="border:1px solid black;">
+			<tr>
+				<td class="right">Duration</td>
+				<td class="left">1.0 second</td>
+			</tr>
+			<tr>
+				<td class="right">Equation</td>
+				<td class="left">100*sin(1000*x)</td>
+			</tr>
+			<tr>
+				<td class="right">Variable</td>
+				<td class="left">x</td>
+			</tr>
+			<tr>
+				<td class="right">min x variable value</td>
+				<td class="left">0.0</td>
+			</tr>
+			<tr>
+				<td class="right">max x variable value</td>
+				<td class="left">2&pi;</td>
+			</tr>
+			<tr>
+				<td class="right">min y variable value</td>
+				<td class="left">-100.0</td>
+			</tr>
+			<tr>
+				<td class="right">max y variable value</td>
+				<td class="left">100.0</td>
+			</tr>
+		</table>
+		<p>The code is:</p>
+<pre>
+var wave = new Wave();
+wave.getWaveFile();
+</pre>
+		<p>The result is<br/>
+		    <br/>(zoom level out)
+			<br/><a href="../img/example_1_1.png" target="_blank"><img src="../img/example_1_1.png" alt="Example 1.1 in Audacity Music Editor"/></a>
+			<br/>and
+			(zoom level in)
+			<br/><a href="../img/example_1_2.png" target="_blank"><img src="../img/example_1_2.png" alt="Example 1.2 in Audacity Music Editor"/></a><p/>
+		<script>
+			var wave = new Wave();
+			wave.getWaveFile();
+		</script>
+	</body>
+</html>
