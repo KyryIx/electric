@@ -1,3 +1,5 @@
+## Class to generate audio with math expressions
+
 The Wave class is to use to create WAVE files sound using equations as sine, cosine, tangent, power, and other functions.
 
 ### **Methods in Wave Object**
