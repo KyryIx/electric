@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title>Generate WAV file with math function</title>
+		<script src="../src/math.9.3.2.min.js"></script>
+		<script src="../src/Wave.js"></script>
+		<script src="./functions.js"></script>
+		<style>
+			#help{
+				padding: 2px;
+				margin-left: 2px;
+				font-family: Sans-serif;
+				background-color: #ddd;
+				cursor: help;
+			}
+			.borderCanvas{
+				border: 1px solid #bce3c3;
+			}			
+		</style>
+		<style>
+			body{
+				text-align: center;
+			}
+			.right{
+				text-align: right;
+				padding: 5px;
+			}
+			.left{
+				text-align: left;
+				padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<table align="center">
+			<tr>
+				<td align="center" colspan="2">
+					<h1>Generate WAV file with math function</h1>
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray"/>
+				</td>
+			</tr>
+			<tr>
+				<td td align="right"><span class="label">Expression:</span></td>
+				<td>
+					<input type="text" id="expression" value="2*sin(1000*x)*cos(1000*x)^2" onchange="plot();" onkeyup="plot();"/>
+					<span id="help" onclick="functions();">?</span>
+				</td>
+			</tr>
+			<tr>
+				<td class="right">Variable</td>
+				<td class="left">x</td>
+			</tr>
+			<tr>
+				<td class="right">Min. x variable value</td>
+				<td class="left"><input type="text" id="minXvalue" value="-pi/1000" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td class="right">Max. x variable value</td>
+				<td class="left"><input type="text" id="maxXvalue" value="pi/1000" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td class="right">Min. y variable value</td>
+				<td class="left"><input type="text" id="minYvalue" value="-1.0" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td class="right">Max. y variable value</td>
+				<td class="left"><input type="text" id="maxYvalue" value="1.0" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td class="right">Duration (seconds):</td>
+				<td class="left"><input type="text" id="duration" value="2.0"/></td>
+			</tr>
+			<tr>
+				<td class="right">Width graphic (pixel)<sup>*</sup>:</td>
+				<td class="left"><input type="text" id="widthCanvasValue" value="640" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td class="right">Height graphic (pixel)<sup>*</sup>:</td>
+				<td class="left"><input type="text" id="heightCanvasValue" value="320" onchange="plot();" onkeyup="plot();"/></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2" class="tdCanvas">
+					<canvas class="borderCanvas" id="myCanvas" width="640" height="320">Error: This browser not supported HTML5!</canvas>
+				</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<hr style="height:2px;border-width:0;color:gray;background-color:gray"/>
+					<b>Filename:</b> <input type="text" id="filename" value="audio_expression"/>&nbsp;<input type="button" value="Generate File Wave" onclick="generateWaveFile();"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="font-size:9pt;text-align:right;"><br/>* Don't modify Wave file</td>
+			</tr>
+		</table>
+	</body>
+</html>
