@@ -180,6 +180,9 @@ function functions(){
 	myWindow.document.write( "<p><b>sqrt(x)</b> 	Returns the square root of x</p>" );
 	myWindow.document.write( "<p><b>tan(x)</b> 		Returns the tangent of an angle</p>" );
 	myWindow.document.write( "<p><b>tanh(x)</b> 		Returns the hyperbolic tangent of x</p>" );
+	myWindow.document.write( '<p><b>See more</b> informations about functions and constans in ' + 
+	                         '<a href="https://mathjs.org/docs/reference/functions.html" target="_blank">https://mathjs.org/docs/reference/functions.html</a> ' +
+							 'and <a href="https://mathjs.org/docs/reference/constants.html" target="_blank">https://mathjs.org/docs/reference/constants.html</a></p>' );
 }
 
 // ************************************************************** //

@@ -14,6 +14,52 @@ var idCanvasHeight = 'heightCanvasValue';
 
 // ************************************************************** //
 // * DEVELOPER: Everton Pereira da Cruz                         * //
+// * FUNCTION:  Functions                                       * //
+// ************************************************************** //
+function functions(){
+	var myWindow = window.open( "", "MsgWindow", "width=320, height=240" );
+	myWindow.document.write( "<p><b>x+y</b> 		Returns the value of x add y</p>" );
+	myWindow.document.write( "<p><b>x-y</b> 		Returns the value of x subtract y</p>" );
+	myWindow.document.write( "<p><b>x*y</b> 		Returns the value of x multiply y</p>" );
+	myWindow.document.write( "<p><b>x/y</b> 		Returns the value of x divide y</p>" );
+	myWindow.document.write( "<p><b>x^y</b> 		Returns the value of x to the power of y</p>" );
+	myWindow.document.write( "<p><b>~x</b> 		    Returns the value of NOT x</p>" );
+	myWindow.document.write( "<p><b>x&y</b> 		Returns the value of x AND y</p>" );
+	myWindow.document.write( "<p><b>x|y</b> 		Returns the value of x OR y</p>" );
+	
+	myWindow.document.write( "<p><b>abs(x)</b>		Returns the absolute value of x</p>" );
+	myWindow.document.write( "<p><b>acos(x)</b> 	Returns the arccosine of x, in radians</p>" );
+	myWindow.document.write( "<p><b>asin(x)</b> 	Returns the arcsine of x, in radians</p>" );
+	myWindow.document.write( "<p><b>atan(x)</b> 	Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians</p>" );
+	myWindow.document.write( "<p><b>atan2(y,x)</b> 	Returns the arctangent of the quotient of its arguments</p>" );
+	myWindow.document.write( "<p><b>ceil(x)</b> 	Returns x, rounded upwards to the nearest integer</p>" );
+	myWindow.document.write( "<p><b>cos(x)</b>		Returns the cosine of x (x is in radians)</p>" );
+	myWindow.document.write( "<p><b>cosh(x)</b>		Returns the hyperbolic cosine of x</p>" );
+	myWindow.document.write( "<p><b>exp(x)</b>		Returns the value of Ex</p>" );
+	myWindow.document.write( "<p><b>floor(x)</b> 	Returns x, rounded downwards to the nearest integer</p>" );
+	myWindow.document.write( "<p><b>log(x)</b>		Returns the natural logarithm (base E) of x</p>" );
+	myWindow.document.write( "<p><b>log(x,b)</b>	Returns the logarithm of x in base b</p>" );
+	myWindow.document.write( "<p><b>max(x,y,z,...,n)</b> Returns the number with the highest value</p>" );
+	myWindow.document.write( "<p><b>min(x,y,z,...,n)</b> Returns the number with the lowest value</p>" );
+	myWindow.document.write( "<p><b>PI</b>			Returns the ratio of a circle's area to the square of its radius, approximately 3.14</p>" );
+	myWindow.document.write( "<p><b>pow(x,y)</b> 	Returns the value of x to the power of y</p>" );
+	myWindow.document.write( "<p><b>random()</b> 	Returns a random number between 0 and 1</p>" );
+	myWindow.document.write( "<p><b>random(max)</b>	Returns a random number between 0 and max</p>" );
+	myWindow.document.write( "<p><b>random(min,max)</b>	Returns a random number between min and max</p>" );
+	myWindow.document.write( "<p><b>round(x)</b> 	Rounds x to the nearest integer</p>" );
+	myWindow.document.write( "<p><b>round(x,n)</b> 	Rounds x to the nearest integer, where n is number of decimals</p>" );
+	myWindow.document.write( "<p><b>sin(x)</b> 		Returns the sine of x (x is in radians)</p>" );
+	myWindow.document.write( "<p><b>sinh(x)</b> 	Returns the hyperbolic sine of x</p>" );
+	myWindow.document.write( "<p><b>sqrt(x)</b> 	Returns the square root of x</p>" );
+	myWindow.document.write( "<p><b>tan(x)</b> 		Returns the tangent of an angle</p>" );
+	myWindow.document.write( "<p><b>tanh(x)</b> 	Returns the hyperbolic tangent of x</p>" );
+	myWindow.document.write( '<p><b>See more</b> informations about functions and constans in ' + 
+	                         '<a href="https://mathjs.org/docs/reference/functions.html" target="_blank">https://mathjs.org/docs/reference/functions.html</a> ' +
+							 'and <a href="https://mathjs.org/docs/reference/constants.html" target="_blank">https://mathjs.org/docs/reference/constants.html</a></p>' );
+}
+
+// ************************************************************** //
+// * DEVELOPER: Everton Pereira da Cruz                         * //
 // * FUNCTION:  Treatment of expression math                    * //
 // ************************************************************** //
 function evalExpression( expression, value ){
